@@ -3,7 +3,7 @@ import requests
 import ssl
 import socket
 from urllib.parse import urlparse
-
+import os
 app = Flask(__name__)
 
 REQUIRED_SECURITY_HEADERS = [
@@ -120,6 +120,6 @@ def scan():
 @app.route("/")
 def home():
     return "Website Scanner Running"
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001)
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host="0.0.0.0", port=port)
