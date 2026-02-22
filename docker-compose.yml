@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo
+    container_name: cybershield_mongo
+    ports:
+      - "27017:27017"
+
+  backend:
+    build: ./backend
+    container_name: cybershield_backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/cybershield
+      - JWT_SECRET=supersecretkey
+
+  website_scanner:
+    build: ./microservices/website_scanner
+    container_name: website_scanner
+    ports:
+      - "5001:5001"
+
+  port_scanner:
+    build: ./microservices/port_scanner
+    container_name: port_scanner
+    ports:
+      - "5002:5002"
+
+  password_checker:
+    build: ./microservices/password_checker
+    container_name: password_checker
+    ports:
+      - "5003:5003"
+
+  phishing_model:
+    build: ./microservices/phishing_model
+    container_name: phishing_model
+    ports:
+      - "5004:5004"
+
+  frontend:
+    build: ./frontend
+    container_name: cybershield_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend

@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  background: #0a0f1c;
+  color: #00ffcc;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #111827;
+  padding: 20px;
+  border-right: 1px solid #00ffcc33;
+}
+
+.sidebar h2 {
+  color: #00ffcc;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.sidebar li:hover {
+  background: #00ffcc22;
+}
+
+.main {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.module-card {
+  background: #111827;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #00ffcc33;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.module-card:hover {
+  box-shadow: 0 0 15px #00ffcc66;
+  transform: translateY(-5px);
+}
+
+.section {
+  background: #111827;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #00ffcc33;
+}
+
+input {
+  background: #0a0f1c;
+  color: #00ffcc;
+  border: 1px solid #00ffcc44;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+input::placeholder {
+  color: #00ffcc66;
+}
+
+button {
+  background: #00ffcc;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Orbitron", sans-serif;
+}
+
+button:hover {
+  background: #00ddb3;
+  box-shadow: 0 0 10px #00ffcc66;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border-bottom: 1px solid #00ffcc33;
+  text-align: left;
+}
+
+table th {
+  color: #00ffcc;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+}
+
+.badge.low {
+  background: #22c55e;
+}
+
+.badge.medium {
+  background: #f59e0b;
+}
+
+.badge.high {
+  background: #ef4444;
+}
+
+/* Auth forms (Login / Register) */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-page form {
+  background: #111827;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #00ffcc33;
+  width: 100%;
+  max-width: 360px;
+}
+
+.auth-page h2 {
+  margin: 0 0 20px;
+  color: #00ffcc;
+}
+
+.auth-page input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.auth-page a {
+  color: #00ffcc;
+  margin-top: 15px;
+  display: block;
+  text-align: center;
+}
+
+.auth-page a:hover {
+  text-decoration: underline;
+}
+
+/* Risk gauge */
+.risk-gauge {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  border: 6px solid;
+  margin: 0 auto 10px;
+}
+
+.risk-gauge.low { border-color: #22c55e; color: #22c55e; }
+.risk-gauge.medium { border-color: #f59e0b; color: #f59e0b; }
+.risk-gauge.high { border-color: #ef4444; color: #ef4444; }
+
+.stats-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: #111827;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #00ffcc33;
+  flex: 1;
+  min-width: 140px;
+}
+
+.news-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #00ffcc22;
+}
+
+.news-item:last-child { border-bottom: none; }
+
+.news-item a {
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+.news-item a:hover {
+  text-decoration: underline;
+}
+
+.alert-item {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  border-left: 4px solid #00ffcc;
+  background: #0a0f1c33;
+}
+
+.alert-item.high { border-left-color: #ef4444; }
+.alert-item.medium { border-left-color: #f59e0b; }
