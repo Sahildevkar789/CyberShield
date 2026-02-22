@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import re
 from urllib.parse import urlparse
-
+import os
 app = Flask(__name__)
 
 SUSPICIOUS_KEYWORDS = [
@@ -71,5 +71,8 @@ def predict():
         "reasons": reasons
     })
 
+
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5004, debug=True)
+    port = int(os.environ.get("PORT", 5004))
+    app.run(host="0.0.0.0", port=port)
