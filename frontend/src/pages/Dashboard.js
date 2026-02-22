@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import axios from "axios";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Dashboard() {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   useEffect(() => {
-    const socket = io("http://localhost:5000");
+    const socket = io(API_BASE_URL);
 
     socket.on("newAlert", (alert) => {
       const item = {
@@ -38,9 +39,9 @@ function Dashboard() {
         };
 
         const [statsRes, newsRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/dashboard/stats", { headers }),
+          axios.get(`${API_BASE_URL}/api/dashboard/stats`, { headers }),
           axios
-            .get("http://localhost:5000/api/news", { headers })
+            .get(`${API_BASE_URL}/api/news`, { headers })
             .catch((e) => ({
               data: [],
               error:
