@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../api";
 
 function ThreatIntelligence() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function ThreatIntelligence() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/threat/virustotal",
+       `${API_BASE_URL}/api/threat/virustotal`,
         { url: urlInput },
         { headers: { Authorization: `Bearer ${userInfo?.token}` } }
       );
