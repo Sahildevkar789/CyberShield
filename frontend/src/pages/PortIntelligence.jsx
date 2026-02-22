@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
 function PortIntelligence() {
   const [hostInput, setHostInput] = useState("");
@@ -16,7 +17,7 @@ function PortIntelligence() {
 
   const fetchHistory = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/history", {
+      const { data } = await axios.get(`${API_BASE_URL}/api/history`, {
         headers: { Authorization: `Bearer ${userInfo?.token}` },
       });
       setHistory(data.portScans || []);
@@ -31,7 +32,7 @@ function PortIntelligence() {
     setResult(null);
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/portscan",
+        `${API_BASE_URL}/api/portscan`,
         { host: hostInput },
         { headers: { Authorization: `Bearer ${userInfo?.token}` } }
       );
