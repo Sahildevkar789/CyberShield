@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
 function WebsiteIntelligence() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function WebsiteIntelligence() {
 
   const fetchHistory = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/history", {
+      const { data } = await axios.get(`${API_BASE_URL}/api/history`, {
         headers: { Authorization: `Bearer ${userInfo?.token}` },
       });
       setHistory(data.websiteScans || []);
@@ -35,7 +36,7 @@ function WebsiteIntelligence() {
     setError(null);
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/scan/website",
+        `${API_BASE_URL}/api/scan/website`,
         { url: urlInput },
         { headers: { Authorization: `Bearer ${userInfo?.token}` } }
       );
