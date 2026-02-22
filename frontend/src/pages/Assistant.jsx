@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
 const QUICK_PROMPTS = [
   "Why is port 80 risky?",
@@ -34,7 +35,7 @@ function Assistant() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/assistant",
+        `${API_BASE_URL}/api/assistant` ,
         { question: text },
         { headers: { Authorization: `Bearer ${userInfo?.token}` } }
       );
