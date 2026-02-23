@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import API_BASE_URL from "../api";
 
-const API = `${API_BASE_URL}/api/auth/register`;
+const API = `${API_BASE_URL}/api/report`;
 
 function Reports() {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
