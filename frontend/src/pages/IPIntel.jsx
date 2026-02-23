@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
 function IPIntel() {
   const [ipInput, setIpInput] = useState("");
@@ -25,7 +26,7 @@ function IPIntel() {
       const headers = { Authorization: `Bearer ${userInfo?.token}` };
 
       const [abuseRes, geoRes] = await Promise.allSettled([
-        axios.post("http://localhost:5000/api/ip/reputation", { ip }, { headers }),
+        axios.post(`${API_BASE_URL}/api/ip/reputation`, { ip }, { headers })
         axios.get(`https://ipapi.co/${ip}/json/`, { timeout: 5000 })
       ]);
 
