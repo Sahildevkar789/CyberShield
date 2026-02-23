@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
-const API = "http://localhost:5000/api/threat/domain-intel";
+const API = `${API_BASE_URL}/api/threat/domain-intel`;
 
 function DomainIntel() {
   const [searchParams, setSearchParams] = useSearchParams();
