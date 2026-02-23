@@ -33,7 +33,7 @@ function MiniChat() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/assistant",
+         `${API_BASE_URL}/api/assistant`,
         { question: text },
         { headers: { Authorization: `Bearer ${userInfo?.token}` } }
       );
