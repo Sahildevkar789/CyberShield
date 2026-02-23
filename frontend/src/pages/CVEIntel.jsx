@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
 function CVEIntel() {
   const [keyword, setKeyword] = useState("");
@@ -17,7 +18,7 @@ function CVEIntel() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/cve/search",
+        `${API_BASE_URL}/api/cve/search`,
         { keyword: keyword.trim() },
         { headers: { Authorization: `Bearer ${userInfo?.token}` } }
       );
