@@ -10,10 +10,15 @@ exports.checkPhishing = async (req, res) => {
     }
 
     // LOCAL DEVELOPMENT URL
-    const response = await axios.post(
-      "http://127.0.0.1:5004/predict",
-      { url }
-    );
+    if (!process.env.PHISHING_MODEL_URL) {
+  throw new Error("PHISHING_MODEL_URL not configured");
+}
+
+const response = await axios.post(
+  `${process.env.PHISHING_MODEL_URL}/predict`,
+  { url },
+  { timeout: 20000 }
+);
 
     const result = response.data;
 
