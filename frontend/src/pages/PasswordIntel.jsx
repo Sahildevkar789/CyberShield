@@ -17,21 +17,23 @@ function PasswordIntel() {
     setResult(null);
 
     try {
-      const { data } = await axios.post(
-  `${API_BASE_URL}/api/password`,
-        { password },
-        {
-          headers: {
-            Authorization: `Bearer ${userInfo?.token}`
-          }
-        }
-      );
-      setResult(data);
-    } catch (err) {
-      alert(err.response?.data?.message || "Password check failed");
-    } finally {
-      setLoading(false);
+  const { data } = await axios.post(
+    `${API_BASE_URL}/api/password`,
+    { password },
+    {
+      headers: {
+        Authorization: `Bearer ${userInfo?.token}`
+      }
     }
+  );
+
+  setResult(data);
+
+} catch (err) {
+  alert(err.response?.data?.message || "Password check failed");
+} finally {
+  setLoading(false);
+}
   };
 
   return (
