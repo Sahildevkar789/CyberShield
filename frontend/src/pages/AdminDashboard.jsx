@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
-const API = "http://localhost:5000";
+const API = API_BASE_URL;
 
 function AdminDashboard() {
   const [stats, setStats] = useState(null);
