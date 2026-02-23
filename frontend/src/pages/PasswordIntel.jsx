@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
 function PasswordIntel() {
   const [password, setPassword] = useState("");
@@ -17,7 +18,7 @@ function PasswordIntel() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/password",
+  `${API_BASE_URL}/api/password`,
         { password },
         {
           headers: {
