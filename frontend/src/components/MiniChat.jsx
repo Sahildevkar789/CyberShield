@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import API_BASE_URL from "../api";
 const QUICK_PROMPTS = [
   "Why is port 80 risky?",
   "What does missing CSP mean?",
