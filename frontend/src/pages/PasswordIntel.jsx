@@ -17,6 +17,9 @@ function PasswordIntel() {
     setResult(null);
 
     try {
+      console.log("API_BASE_URL =", API_BASE_URL);
+  console.log("Full URL =", `${API_BASE_URL}/api/password`);
+      
   const { data } = await axios.post(
     `${API_BASE_URL}/api/password`,
     { password },
