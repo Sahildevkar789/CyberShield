@@ -15,6 +15,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import { ProtectedRoute, AdminRoute } from "./components/ProtectedRoute";
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <SpeedInsights />
     </Router>
   );
 }
