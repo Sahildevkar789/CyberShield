@@ -9,10 +9,15 @@ exports.checkPassword = async (req, res) => {
       return res.status(400).json({ message: "Password required" });
     }
 
-    const response = await axios.post(
-      process.env.PASSWORD_CHECKER_URL || "http://127.0.0.1:5003/check",
-      { password }
-    );
+   if (!process.env.PASSWORD_CHECKER_URL) {
+  throw new Error("PASSWORD_CHECKER_URL not configured");
+}
+
+const response = await axios.post(
+  `${process.env.PASSWORD_CHECKER_URL}/check`,
+  { password },
+  { timeout: 15000 }
+);
 
     const result = response.data;
 
