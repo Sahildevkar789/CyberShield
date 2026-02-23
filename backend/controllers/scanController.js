@@ -42,11 +42,16 @@ function scanError(err, scannerMessage) {
 /** Run website scan and save for user. Returns { scan } or { error }. */
 async function runWebsiteScan(url, userId) {
   try {
+    if (!process.env.WEBSITE_SCANNER_URL) {
+      throw new Error("WEBSITE_SCANNER_URL not configured");
+    }
+
     const response = await axios.post(
-      process.env.WEBSITE_SCANNER_URL || "http://127.0.0.1:5001/scan",
+      `${process.env.WEBSITE_SCANNER_URL}/scan`,
       { url },
       { timeout: 30000 }
     );
+
     const result = response.data;
     if (result.status === "error") {
       return { error: scanError(null, result.message || "The scanner could not analyze this URL.") };
