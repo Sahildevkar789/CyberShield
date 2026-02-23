@@ -12,7 +12,7 @@ exports.checkPassword = async (req, res) => {
    if (!process.env.PASSWORD_CHECKER_URL) {
   throw new Error("PASSWORD_CHECKER_URL not configured");
 }
-
+console.log("Calling:", `${process.env.PASSWORD_CHECKER_URL}/check`);
 const response = await axios.post(
   `${process.env.PASSWORD_CHECKER_URL}/check`,
   { password },
