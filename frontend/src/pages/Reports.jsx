@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
+import API_BASE_URL from "../api";
 
-const API = "http://localhost:5000/api/report";
+const API = `${API_BASE_URL}/api/auth/register`;
 
 function Reports() {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
