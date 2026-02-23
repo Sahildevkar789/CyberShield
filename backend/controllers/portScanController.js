@@ -19,10 +19,15 @@ exports.scanPorts = async (req, res) => {
       return res.status(400).json({ message: "Host is required" });
     }
 
-    const response = await axios.post(
-      process.env.PORT_SCANNER_URL || "http://127.0.0.1:5002/scan",
-      { host }
-    );
+    if (!process.env.PORT_SCANNER_URL) {
+  throw new Error("PORT_SCANNER_URL not configured");
+}
+
+const response = await axios.post(
+  `${process.env.PORT_SCANNER_URL}/scan`,
+  { host },
+  { timeout: 30000 }
+);
 
     const result = response.data;
 
